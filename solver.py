@@ -2,6 +2,7 @@
 
 
 
+# num_moves, starting_value, target_value are ints and operations is a list of strings
 def solve(num_moves, starting_value, target_value, operations):
 
 	return -1
@@ -20,15 +21,27 @@ def apply_operation(x, operation):
 
 	# Rough idea of what this should look like:
 	if operation == "back":
-		remove last digit
+		#remove last digit
+		num=str(x)
+		num=num[:-1]
+		num=int(num)
+	return num
+		
 	elif operation == "reverse":
-		do stuff
+		#do stuff-I'm assuming this means reverse the order the numbers appear in
+		num=str(x)
+		num=num[::-1]
+		num=int(num)
+	return num
 	elif operation = "+/-":
 		negate
 	elif operation starts with +-*/:
 		# TODO: make sure this works for negative numbers and more than one digit
 		do stuff
-	elif operation is just a number:
-		append that number to x
+	elif type(operation) == int:
+		operation=str(operation)
+		num=str(x)
+		num+=operation
+	return num
 
 	return -1	
