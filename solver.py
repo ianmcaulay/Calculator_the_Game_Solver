@@ -17,10 +17,16 @@ def solve(num_moves, starting_value, target_value, operations):
 def apply_operation(x, operation):
 	# Parse the operation, apply it to x, and return the result
 	
+
 	# Rough idea of what this should look like:
 	if operation == "back":
-		return x // 10
+		remove last digit
+	elif operation == "reverse":
+		do stuff
+	elif operation = "+/-":
+		negate
 	elif operation starts with +-*/:
+		# TODO: make sure this works for negative numbers and more than one digit
 		do stuff
 	elif operation is just a number:
 		append that number to x
