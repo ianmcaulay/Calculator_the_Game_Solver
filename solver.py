@@ -15,10 +15,9 @@ def solve(num_moves, starting_value, target_value, operations):
 # "3" for insert the number 3, "back" for the backspace. Given
 # that I've currently only seen around 25 of the levels there are
 # probably others that I'm missing.
+
 def apply_operation(x, operation):
 	# Parse the operation, apply it to x, and return the result
-	
-
 	# Rough idea of what this should look like:
 	if operation == "back":
 		#remove last digit
@@ -35,7 +34,23 @@ def apply_operation(x, operation):
 	return num
 	elif operation = "+/-":
 		negate
-	elif operation starts with +-*/:
+	elif operation.startswith(("+", "-", "*", "/")):
+	if operation.startswith("+"):
+		operation=int(operation[1:])
+		x+=operation
+	return x	
+	if operation.startswith("-"):
+		operation=int(operation[1:])
+		x=x-operation
+	return x
+	if operation.startswith("*"):
+		operation=int(operation[1:])
+		x=x*operation
+	return x
+	if operation.startswith("/"):
+		operation=int(operation[1:])
+		x=x/operation
+	return x
 		# TODO: make sure this works for negative numbers and more than one digit
 		do stuff
 	elif type(operation) == int:
