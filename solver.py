@@ -4,8 +4,36 @@
 
 # num_moves, starting_value, target_value are ints and operations is a list of strings
 def solve(num_moves, starting_value, target_value, operations):
+    """ Example call: solve(3, 0, 12, ["*2", "+3"]) should return the moves +3, *2, *2 """
 
-    return -1
+    moves = solve_helper(num_moves, starting_value, target_value, operations, [])
+    if moves:
+        print_moves(moves)
+    else:
+        print("Unable to solution")
+
+
+def solve_helper(num_moves, current_value, target_value, operations, moves_so_far):
+
+    if current_value == target_value:
+        return moves_so_far
+    if num_moves < 1:
+        return False
+
+    for operation in operations:
+        new_number = apply_operation(current_value, operation)
+        new_moves_so_far = moves_so_far.append(operation)
+        using_this_operation = solve_helper(num_moves - 1, new_number, target_value, operations, new_moves_so_far)
+        if using_this_operation:
+            return using_this_operation
+
+    return False
+
+def print_moves(moves):
+
+    for move in moves:
+        print("Use button " + move)
+
 
 def test_apply_operation():
     # TODO: add exponential because I think that can happen as well
