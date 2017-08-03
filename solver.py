@@ -87,9 +87,17 @@ def apply_operation(x, operation):
         prev, new = operation.split("=>")
         num = str(x).replace(prev, new)
     elif operation == ">":
-        num = str(x)[-1] + str(x)[1:-1]
+        if x < 0:
+            num = "-" + str(x)[-1] + str(x)[1:-1]
+        else:
+            num = str(x)[-1] + str(x)[0:-1]
     elif operation == "<":
-        num = str(x)[1:-1] + str(x)[-1]
+        if x < 0:
+            num = "-" + str(x)[2:] + str(x)[1]
+        else:
+            num = str(x)[1:] + str(x)[0]
+        print(x)
+        print(num)
     else:
         try:
             int(operation)
